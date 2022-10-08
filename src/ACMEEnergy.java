@@ -56,11 +56,8 @@ public class ACMEEnergy {
 
     }
 
-    //IMPLEMENTAR OS METODOS DO EXECUTA EM ORDEM
-
-    private void cadastrarNovaUsina() {
-        ArrayList<Usina> usinasCadastradas = new ArrayList<>();
-        Scanner in = new Scanner(System.in);
+    private void cadastrarNovaUsina() { //adiciona na lista ou retorna que ja existe uma usina com esse nome
+        ArrayList<Usina> usinasCadastradas = conglomerado.getListaDeUsinas();
         System.out.println("Insira os dados de uma nova usina para cadastrá-la");
 
         System.out.println("Nome: ");
@@ -69,6 +66,15 @@ public class ACMEEnergy {
         double producaoMWh = in.nextDouble();
         System.out.println("Custo Mwh: ");
         double custoMWh = in.nextDouble();
+
+        if (usina.getNome().equals(nome)) {
+            System.out.println("Ja existe uma usina com esse nome. Usina repetida!");
+        } else {
+            for (Usina usina :
+                 usinasCadastradas) {
+
+            }
+        }
 
         //iterar com for each para ver se a usina ja exsite
         //caso nao, adicinoar a usina na lista de usinas cadastradas
