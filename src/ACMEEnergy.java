@@ -52,11 +52,11 @@ public class ACMEEnergy {
         System.out.println("Opcao desejada: ");
     }
 
-    public void inicializa() { //implementar a sublcasse de Conglomerado primeiro
+    public void inicializa() { //implementar a sublcasse de Conglomerado primeiro - METODO PRE CADASTRA
 
     }
 
-    private void cadastrarNovaUsina() { //adiciona na lista ou retorna que ja existe uma usina com esse nome
+    public void cadastrarNovaUsina() { //adiciona na lista ou retorna que ja existe uma usina com esse nome
         ArrayList<Usina> usinasCadastradas = conglomerado.getListaDeUsinas();
         System.out.println("Insira os dados de uma nova usina para cadastrá-la");
 
@@ -70,15 +70,45 @@ public class ACMEEnergy {
         if (usina.getNome().equals(nome)) {
             System.out.println("Ja existe uma usina com esse nome. Usina repetida!");
         } else {
-            for (Usina usina :
-                 usinasCadastradas) {
-
-            }
+            usinasCadastradas.add(usina);
         }
-
         //iterar com for each para ver se a usina ja exsite
         //caso nao, adicinoar a usina na lista de usinas cadastradas
+    }
+
+    public void pesquisarUsina() {
+        System.out.println("Insira o nome de uma usina para pesquisá-la: ");
+        String nome = in.nextLine();
+        ArrayList<Usina> usinasCadastradas = conglomerado.pesquisaUsina(nome);
+        if (usinasCadastradas.contains(nome)) {
+            for (Usina usina :
+                    usinasCadastradas) {
+                System.out.println("Nome: ");
+            }
+        } else {
+            System.out.println("Nenhuma usina localizada com este nome.");
+        }
 
 
+    }
+
+    private void listarTodasUsinas() {
+        ArrayList<Usina> usinasCadastradas = conglomerado.getListaDeUsinas();
+        if (usinasCadastradas.isEmpty()) {
+            System.out.println("Nenhuma usina cadastrada.");
+        } else {
+            for (Usina usina :
+                    usinasCadastradas) {
+                System.out.println("Nome: "+usina.getNome());
+                System.out.println("Producao de MWh: "+usina.getProducaoMWh());
+                System.out.println("Custo de MWh: "+usina.getCustoMWh());
+            }
+        }
+    }
+
+    private void consultarPrecoMwh() {
+        System.out.println("Insira o nome de uma usina para consultar seu preco por MWh: ");
+        double preco = in.nextDouble();
+        ArrayList<Usina> listaDeUsinas = conglomerado.consultaPreco(preco);
     }
 }

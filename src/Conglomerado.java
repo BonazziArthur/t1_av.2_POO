@@ -5,31 +5,34 @@ public class Conglomerado { //implementar os metodos antes de tudo!!!!!
     private ArrayList<Usina> listaDeUsinas;
 
     public boolean CadastraUsina(Usina usina) {
-        if (!Objects.equals(usina.getNome(), usina.getNome())) {
+        if (usina.getNome().equals(usina)) {
+            return false;
+        }
+        else {
             listaDeUsinas.add(usina);
             return true;
         }
-        return false;
     }
 
     public Usina pesquisaUsina(String nome) { //?
+        ArrayList<Usina> listaDesejadaNome = new ArrayList<>();
         if (listaDeUsinas.contains(nome)) {
-            return null;
+            return listaDesejadaNome;
         }
-        return Usina;
+        return null;
     }
 
     public ArrayList<Usina> listaTodasUsinas() {
-        listaDeUsinas = new ArrayList<>();
+        ArrayList<Usina> listaDesejada = new ArrayList<>();
         if (listaDeUsinas.isEmpty()) {
             return null;
         }
-        return listaDeUsinas;
+        return listaDesejada;
 
     }
 
     public double consultaPreco(String nome) {
-        if(listaDeUsinas.contains(nome)) {
+        if (listaDeUsinas.contains(nome)) {
             return usina.getCustoMHw();
         }
         return -1.0;
